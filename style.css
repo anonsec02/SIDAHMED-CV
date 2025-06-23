@@ -179,6 +179,16 @@ body.rtl {
     transition: all 0.3s ease;
 }
 
+.contact-item a {
+    color: inherit; /* يرث اللون من العنصر الأب (.contact-item) */
+    text-decoration: none; /* إزالة الخط السفلي */
+    transition: color 0.3s ease; /* إضافة تأثير انتقال سلس للون عند التحويم */
+}
+
+.contact-item a:hover {
+    color: #ffd700; /* تغيير اللون إلى الذهبي عند مرور المؤشر */
+}
+
 .contact-item:hover {
     background: rgba(212, 175, 55, 0.2);
     transform: translateX(5px);
