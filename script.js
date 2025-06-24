@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const titles = {
             "fr": "Sid'Ahmed Mohamed Ejehah - Curriculum Vitae",
             "en": "Sid Ahmed Mohamed Ejehah - Curriculum Vitae", 
-            "ar": "سيدأحمد محمد إجهاه - السيرة الذاتية"
+            "ar": "سيداحمد محمد أجهاه - السيرة الذاتية"
         };
         document.title = titles[lang];
         
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const descriptions = {
             "fr": "Expert en Cybersécurité et Spécialiste IA - Sid'Ahmed Mohamed Ejehah. Plus d\'un an d\'expérience en tests d\'intrusion et développement d\'IA.",
             "en": "Cybersecurity Expert & AI Specialist - Sid'Ahmed Mohamed Ejehah. Over one year of experience in penetration testing and AI development.",
-            "ar": "خبير الأمن السيبراني و متخصص الذكاء الاصطناعي - سيد أحمد محمد أجهاه. أكثر من سنة خبرة عملية في اختبار الاختراق وتطوير الذكاء الاصطناعي."
+            "ar": "خبير الأمن السيبراني و متخصص الذكاء الاصطناعي - سيداحمد محمد أجهاه. أكثر من سنة خبرة عملية في اختبار الاختراق وتطوير الذكاء الاصطناعي."
         };
         
         let metaDesc = document.querySelector("meta[name=\"description\"]");
