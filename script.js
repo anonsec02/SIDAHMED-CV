@@ -39,17 +39,17 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Update page title
         const titles = {
-            "fr": "Sid Ahmed Mohamed Ejjah - Curriculum Vitae",
-            "en": "Sid Ahmed Mohamed Ejjah - Curriculum Vitae", 
-            "ar": "سيد أحمد محمد إججاه - السيرة الذاتية"
+            "fr": "Sid'Ahmed Mohamed Ejehah - Curriculum Vitae",
+            "en": "Sid Ahmed Mohamed Ejehah - Curriculum Vitae", 
+            "ar": "سيدأحمد محمد إجهاه - السيرة الذاتية"
         };
         document.title = titles[lang];
         
         // Update meta description
         const descriptions = {
-            "fr": "Expert en Cybersécurité et Spécialiste IA - Sid Ahmed Mohamed Ejjah. Plus d\'un an d\'expérience en tests d\'intrusion et développement d\'IA.",
-            "en": "Cybersecurity Expert & AI Specialist - Sid Ahmed Mohamed Ejjah. Over one year of experience in penetration testing and AI development.",
-            "ar": "خبير الأمن السيبراني ومتخصص الذكاء الاصطناعي - سيد أحمد محمد إججاه. أكثر من سنة خبرة في اختبار الاختراق وتطوير الذكاء الاصطناعي."
+            "fr": "Expert en Cybersécurité et Spécialiste IA - Sid'Ahmed Mohamed Ejehah. Plus d\'un an d\'expérience en tests d\'intrusion et développement d\'IA.",
+            "en": "Cybersecurity Expert & AI Specialist - Sid'Ahmed Mohamed Ejehah. Over one year of experience in penetration testing and AI development.",
+            "ar": "خبير الأمن السيبراني و متخصص الذكاء الاصطناعي - سيد أحمد محمد أجهاه. أكثر من سنة خبرة عملية في اختبار الاختراق وتطوير الذكاء الاصطناعي."
         };
         
         let metaDesc = document.querySelector("meta[name=\"description\"]");
@@ -197,7 +197,7 @@ function shareCV() {
 
 // Add contact functionality
 function sendEmail() {
-    window.location.href = "mailto:sidahmedhedya59@gmail.com?subject=Contact from CV&body=Hello Sid Ahmed,";
+    window.location.href = "mailto:sidahmedhedya59@gmail.com?subject=Contact from CV&body=Hello Sid'Ahmed,";
 }
 
 function callPhone() {
