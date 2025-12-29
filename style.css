@@ -1,31 +1,245 @@
-/* Reset & Base */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 50%,#1a1a1a 100%);color:#e0e0e0;line-height:1.6;min-height:100vh;direction:ltr;transition:all 0.3s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-body.rtl{direction:rtl;font-family:'Cairo',sans-serif;}
-.language-switcher{position:fixed;top:20px;right:20px;z-index:1000;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);border-radius:15px;padding:10px;border:1px solid rgba(212,175,55,0.3);box-shadow:0 8px 25px rgba(0,0,0,0.3);}
-.language-buttons{display:flex;gap:8px;flex-direction:column;}
-.lang-btn{background:linear-gradient(135deg,#2a2a2a,#1a1a1a);color:#e0e0e0;border:1px solid rgba(212,175,55,0.3);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.3s ease;white-space:nowrap;min-width:100px;text-align:center;}
-.lang-btn:hover{background:linear-gradient(135deg,#3a3a3a,#2a2a2a);border-color:rgba(212,175,55,0.5);transform:translateY(-2px);}
-.lang-btn.active{background:linear-gradient(135deg,#d4af37,#ffd700);color:#1a1a1a;border-color:#ffd700;box-shadow:0 4px 15px rgba(212,175,55,0.4);}
-.container{max-width:1200px;margin:20px auto;padding:20px;background:rgba(0,0,0,0.3);backdrop-filter:blur(10px);border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.5);}
-.header{background:linear-gradient(135deg,#2c2c2c 0%,#1a1a1a 100%);border-radius:15px;padding:30px;margin-bottom:30px;border:2px solid #d4af37;box-shadow:0 10px 30px rgba(212,175,55,0.2);position:relative;overflow:hidden;}
-.header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#d4af37,#ffd700,#d4af37);animation:shimmer 2s infinite;}
-@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-.header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
-.profile-placeholder{width:80px;height:80px;background:linear-gradient(135deg,#d4af37,#ffd700);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:bold;color:#1a1a1a;box-shadow:0 5px 15px rgba(212,175,55,0.4);border:3px solid #ffd700;}
-.name{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:#d4af37;margin-bottom:5px;text-shadow:2px 2px 4px rgba(0,0,0,0.5);position:relative;animation:glitch 2s infinite;}
-.section-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#d4af37;margin-bottom:20px;position:relative;padding-bottom:10px;animation:glitch 2s infinite;}
-@keyframes glitch{
-  0%{text-shadow:2px 0 #d4af37,-2px 0 #ffd700;}
-  25%{text-shadow:-2px 0 #d4af37,2px 0 #ffd700;}
-  50%{text-shadow:2px 0 #ffd700,-2px 0 #d4af37;}
-  75%{text-shadow:-2px 0 #ffd700,2px 0 #d4af37;}
-  100%{text-shadow:2px 0 #d4af37,-2px 0 #ffd700;}
+/* Reset ونسق عام */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-/* Warning Overlay */
-#warning-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);color:#fff;display:flex;justify-content:center;align-items:center;z-index:2000;}
-.warning-box{background:#1a1a1a;padding:30px;border-radius:15px;text-align:center;border:2px solid #d4af37;box-shadow:0 10px 30px rgba(212,175,55,0.4);}
-.warning-box button{margin-top:15px;padding:10px 20px;border:none;border-radius:10px;background:#d4af37;color:#1a1a1a;cursor:pointer;font-weight:700;}
-#countdown-timer{position:fixed;top:20px;left:20px;font-weight:700;color:#d4af37;z-index:1000;font-size:1.1rem;}
 
-/* باقي CSS كما في ملفك الأصلي محفوظ بدون تغيير... */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Language Switcher */
+.language-switcher {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.language-buttons button {
+    border: none;
+    background-color: #eee;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.language-buttons button.active {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+.language-buttons button:hover {
+    background-color: #ff9999;
+    color: #fff;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.profile-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 50%;
+}
+
+.profile-info h1.name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.profile-info p.title {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-item {
+    margin-bottom: 8px;
+}
+
+.contact-item span.icon {
+    margin-right: 5px;
+}
+
+/* Main Content Sections */
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.section-content p {
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.skill-category {
+    flex: 1;
+    min-width: 200px;
+}
+
+.skill-category-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-item {
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Experience and Projects */
+.experience-item, .project-item, .education-item {
+    margin-bottom: 20px;
+}
+
+.project-tech .tech-tag {
+    background-color: #ddd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+/* Personal Skills */
+.personal-skills {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.personal-skill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    font-size: 14px;
+    color: #333;
+}
+
+/* === واجهة زر التحذير والتحذير المرعب === */
+#risk-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #ff0000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cairo', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+#risk-overlay h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: blink 1s infinite;
+}
+
+#countdown {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#exit-btn {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+#exit-btn:hover {
+    background-color: #ff0000;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
