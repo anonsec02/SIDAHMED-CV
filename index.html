@@ -2,36 +2,49 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TELMEDEYN</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="container">
-  <h1>TELMEDEYN</h1>
+<header class="header">
+  <div class="logo">TELMEDEYN</div>
+  <div class="tagline">behavior over memory</div>
+</header>
 
-  <p id="intro">
-    هذه ليست لعبة معرفة.<br>
-    هذا مجرد انعكاس.
-  </p>
+<main class="container">
 
-  <div id="lang">
+  <section class="warning">
+    <p>
+      ⚠ هذا المحتوى تجريبي، تحليلي، وغير موجه للإساءة.<br>
+      لا يجمع بيانات، لا يتتبع هوية، ولا يمثل أداة حقيقية.
+    </p>
+  </section>
+
+  <section class="intro">
+    <p>
+      هذه واجهة.<br>
+      وليست الأداة.
+    </p>
+  </section>
+
+  <section class="language">
     <button onclick="setLang('ar')">العربية</button>
     <button onclick="setLang('ru')">Русский</button>
-  </div>
+  </section>
 
-  <div id="game"></div>
+  <section id="game" class="game"></section>
 
-  <div id="footer">
-    <p>
-      TELMEDEYN-tool (BETA)<br>
-      Linux only · asynchronous · no empathy
-    </p>
-    <p class="signature">
-      sidahmed
-    </p>
-  </div>
-</div>
+</main>
+
+<footer class="footer">
+  <p>
+    TELMEDEYN-tool (BETA)<br>
+    Linux-based environments · async design · workflow analysis
+  </p>
+  <p class="signature">sidahmed</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
