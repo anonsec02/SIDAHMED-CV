@@ -8,12 +8,13 @@
 </head>
 <body>
     <div class="container">
+
         <header class="header">
             <h1>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</h1>
             <h2>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h2>
         </header>
 
-        <main class="main-content">
+        <main class="main-content hidden" id="main-content">
             <form id="psych-form">
                 <div class="question">
                     <label>ماهو الرشيد بالنسبة لك؟</label>
@@ -23,7 +24,6 @@
                         <option value="مكان مستفز">مكان مستفز</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>إلى أي جماعة تنتمي؟</label>
                     <select name="group">
@@ -32,7 +32,6 @@
                         <option value="محايد">محايد</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>كلمة تصف بها تلك البقعة من الأرض</label>
                     <select name="land">
@@ -41,7 +40,6 @@
                         <option value="محايد">محايد</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>أيهم يحمل ذكرياتك؟</label>
                     <select name="memories">
@@ -52,7 +50,6 @@
                         <option value="علك شربه">علك شربه</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>أيهم تنافق له؟</label>
                     <select name="flatter">
@@ -61,7 +58,6 @@
                         <option value="كاملين">كاملين</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>هل أنت غبي و تصدق كل ما تقرأه؟</label>
                     <select name="stupid">
@@ -70,7 +66,6 @@
                         <option value="صدقت أول جملة قرأتها">صدقت أول جملة قرأتها</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد أو المنطقة؟</label>
                     <select name="telmedeyn">
@@ -86,18 +81,28 @@
     </div>
 
     <!-- نافذة التحذير -->
-    <div id="warning-popup" class="popup hidden">
-        <div class="popup-content">
-            <p>⚠️ تحذير: هذه نافذة تحذيرية، استعد للنتيجة!</p>
-            <button id="close-warning">إغلاق</button>
+    <div id="warning-popup" class="popup">
+        <div class="popup-content warning">
+            <p>⚠️ تحذير: هذه اللعبة قد تؤثر على حالتك النفسية، هل ترغب بالمتابعة؟</p>
+            <button id="continue-btn">متابعة</button>
+            <button id="exit-btn">خروج</button>
         </div>
     </div>
 
-    <!-- نافذة النتيجة -->
-    <div id="result-popup" class="popup hidden">
-        <div class="popup-content">
-            <p id="result-text"></p>
-            <button id="close-result">إغلاق</button>
+    <!-- نافذة رسالة الختام -->
+    <div id="final-popup" class="popup hidden">
+        <div class="popup-content final">
+            <p id="final-text"></p>
+            <p id="countdown">5</p>
+        </div>
+    </div>
+
+    <!-- نافذة Telegram -->
+    <div id="telegram-popup" class="popup hidden">
+        <div class="popup-content telegram">
+            <p>💬 أرسل رسالتك إلى sidahmed عبر Telegram</p>
+            <input type="text" id="telegram-msg" placeholder="اكتب رسالتك هنا">
+            <button id="send-telegram">إرسال</button>
         </div>
     </div>
 
