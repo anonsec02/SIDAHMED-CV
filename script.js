@@ -1,66 +1,67 @@
-// عناصر الصفحة
-const warningModal = document.getElementById("warningModal");
-const proceedBtn = document.getElementById("proceedBtn");
-const quizContainer = document.getElementById("quizContainer");
-const submitQuiz = document.getElementById("submitQuiz");
-const resultModal = document.getElementById("resultModal");
+// واجهة التحذير
+const warningOverlay = document.getElementById("warningOverlay");
+const startGameBtn = document.getElementById("startGameBtn");
+const gameContainer = document.getElementById("gameContainer");
+const resultOverlay = document.getElementById("resultOverlay");
 const resultText = document.getElementById("resultText");
-const countdownEl = document.getElementById("countdown");
-const telegramModal = document.getElementById("telegramModal");
-const sendTelegram = document.getElementById("sendTelegram");
+const countdown = document.getElementById("countdown");
+const telegramOverlay = document.getElementById("telegramOverlay");
+const sendTelegramBtn = document.getElementById("sendTelegramBtn");
 const telegramMessage = document.getElementById("telegramMessage");
 
-// إظهار التحذير أولًا
-warningModal.classList.remove("hidden");
+startGameBtn.addEventListener("click", () => {
+    warningOverlay.classList.add("hidden");
+    gameContainer.classList.remove("hidden");
+});
 
-// متابعة التحذير
-proceedBtn.onclick = () => {
-    warningModal.classList.add("hidden");
-    quizContainer.classList.remove("hidden");
-};
+// جمع الأجوبة
+let answers = [];
 
-// تحليل الأسئلة
-submitQuiz.onclick = () => {
-    const form = document.getElementById("quizForm");
-    const answers = new FormData(form);
-    const q = [];
-    for (let value of answers.values()) q.push(value);
+const optionButtons = document.querySelectorAll(".option-btn");
+optionButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const value = parseInt(btn.dataset.value);
+        answers.push(value);
+        btn.parentElement.parentElement.classList.add("hidden");
 
-    let finalMessage = "";
-
-    // تحديد النتائج بدقة لكل سلسلة إجابات
-    if (q[0] === "مكان تربطني به ذكريات" && q[1] === "الجماعة ذوك" && q[2] === "كاملين") {
-        finalMessage = "أنت ذكي لكنك من أهل الرشيد (حرطاني)";
-    } else if (q[2] === "المهم ألا الإستفادة") {
-        finalMessage = "منافق لكنك لا تعرف الطريق إلى هدفك";
-    } else if (q[3] === "نعم" || q[3] === "واللهي") {
-        finalMessage = "لا عليك لست غبيا وحدك جميع من دخلو الرابط في الخانة نفسها إلا من ضغطو على الزر الصحيح في البداية";
-    } else {
-        finalMessage = "تحليلك جيد لكن ركز أكثر على إجاباتك القادمة";
-    }
-
-    quizContainer.classList.add("hidden");
-    resultModal.classList.remove("hidden");
-    resultText.textContent = finalMessage;
-
-    // العد التنازلي
-    let countdown = 5;
-    countdownEl.textContent = countdown;
-    const interval = setInterval(() => {
-        countdown--;
-        countdownEl.textContent = countdown;
-        if (countdown <= 0) {
-            clearInterval(interval);
-            resultModal.classList.add("hidden");
-            telegramModal.classList.remove("hidden");
+        if (answers.length === 4) {
+            showResult();
         }
-    }, 1000);
-};
+    });
+});
 
-// فتح تيليجرام
-sendTelegram.onclick = () => {
-    const msg = encodeURIComponent(telegramMessage.value);
-    // ضع رابط تيليجرام الخاص بك هنا
-    const telegramLink = `https://t.me/gaaraKZG?text=${msg}`;
-    window.open(telegramLink, "_blank");
-};
+// تحليل الأجوبة
+function showResult() {
+    gameContainer.classList.add("hidden");
+    let finalResult = "";
+
+    // معادلة بسيطة لتحديد النتيجة بدقة ودائمًا ثابتة لكل مجموعة إجابات
+    const sum = answers.reduce((a,b)=>a+b,0);
+
+    if(sum <= 3) finalResult = "أنت ذكي لكنك من أهل الرشيد (حرطاني)";
+    else if(sum <=6) finalResult = "منافق لكنك لا تعرف الطريق إلى هدفك";
+    else finalResult = "لا عليك لست غبيا وحدك جميع من دخلو الرابط في الخانة نفسها إلا من ضغطو على الزر الصحيح في البداية";
+
+    resultText.textContent = finalResult;
+    resultOverlay.classList.remove("hidden");
+
+    // عد تنازلي
+    let count = 5;
+    countdown.textContent = count;
+    const timer = setInterval(()=>{
+        count--;
+        countdown.textContent = count;
+        if(count === 0) {
+            clearInterval(timer);
+            resultOverlay.classList.add("hidden");
+            telegramOverlay.classList.remove("hidden");
+        }
+    },1000);
+}
+
+// إرسال رسالة تيليجرام
+sendTelegramBtn.addEventListener("click", ()=>{
+    const text = encodeURIComponent(telegramMessage.value || "مرحبًا، هذه رسالة تلقائية من اللعبة.");
+    const telegramUrl = `https://t.me/YOUR_TELEGRAM_USERNAME?text=${text}`;
+    window.open(telegramUrl,"_blank");
+});
