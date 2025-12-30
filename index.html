@@ -1,57 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sid'Ahmed Mohamed Ejehah - Curriculum Vitae</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>TELMEDEYN</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <div class="language-buttons">
-            <button class="lang-btn" data-lang="ar">🇲🇷 العربية</button>
-            <button class="lang-btn" data-lang="ru">🇷🇺 Русский</button>
-        </div>
-    </div>
+<div id="container">
+  <h1>TELMEDEYN</h1>
 
-    <!-- Risk Button (SEPARATE) -->
-    <div class="risk-button-wrapper">
-        <button id="riskBtn">Potential Risk 🚫</button>
-    </div>
+  <p id="intro">
+    هذه ليست لعبة معرفة.<br>
+    هذا مجرد انعكاس.
+  </p>
 
-    <!-- MAIN CONTENT -->
-    <div class="container" id="mainContent">
-        <!-- ⚠️ المحتوى الكامل لسيرتك كما هو، لم ألمس حرفًا ⚠️ -->
-        <!-- (نفس الكود الذي أعطيتني إياه حرفيًا) -->
-        <!-- اختصار هنا فقط للرد، لكن في ملفك الفعلي يبقى كاملًا -->
-    </div>
+  <div id="lang">
+    <button onclick="setLang('ar')">العربية</button>
+    <button onclick="setLang('ru')">Русский</button>
+  </div>
 
-    <!-- RISK MODE -->
-    <div id="riskMode" class="risk-mode hidden">
-        <div class="risk-box">
-            <p class="risk-ar">
-                تم تفعيل وضع المخاطر  
-                <br>أنت المسؤول الكامل عن الاستمرار
-            </p>
+  <div id="game"></div>
 
-            <p class="risk-ru">
-                Режим риска активирован  
-                <br>Ответственность полностью на вас
-            </p>
+  <div id="footer">
+    <p>
+      TELMEDEYN-tool (BETA)<br>
+      Linux only · asynchronous · no empathy
+    </p>
+    <p class="signature">
+      sidahmed
+    </p>
+  </div>
+</div>
 
-            <div class="countdown">
-                <span id="counter">10</span>
-            </div>
-
-            <button id="exitRisk">العودة / Назад</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
