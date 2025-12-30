@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة نفسية ساخرة</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعبة نفسية ساخرة</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- نافذة التحذير -->
-    <div id="warningOverlay" class="overlay">
+    <div id="warningOverlay" class="overlay active">
         <div class="warning-box">
             <h2>⚠️ تحذير!</h2>
             <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</p>
@@ -28,21 +28,21 @@
             <button class="answerBtn" data-value="3">مكان تربطني به ذكريات</button>
         </div>
 
-        <div class="question" data-index="1">
+        <div class="question hidden" data-index="1">
             <p>إلى أي جماعة تنتمي؟</p>
             <button class="answerBtn" data-value="0">الجماعة ذوك</button>
             <button class="answerBtn" data-value="1">الجماعة الأخرى</button>
             <button class="answerBtn" data-value="2">ماني أمركهم فشي كاملين</button>
         </div>
 
-        <div class="question" data-index="2">
+        <div class="question hidden" data-index="2">
             <p>أيهم تنافق له؟</p>
             <button class="answerBtn" data-value="0">ألا ايهم مسْ لبنتو</button>
             <button class="answerBtn" data-value="1">كاملين</button>
             <button class="answerBtn" data-value="2">المهم ألا الإستفادة</button>
         </div>
 
-        <div class="question" data-index="3">
+        <div class="question hidden" data-index="3">
             <p>هل أنت غبي وتصدق كل ما تقرأه أو تسمعه دون تحليل حيادي؟</p>
             <button class="answerBtn" data-value="0">نعم</button>
             <button class="answerBtn" data-value="1">واللهي</button>
@@ -68,6 +68,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
