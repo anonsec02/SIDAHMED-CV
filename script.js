@@ -1,7 +1,6 @@
 // عناصر الصفحة
 const warningModal = document.getElementById("warningModal");
 const proceedBtn = document.getElementById("proceedBtn");
-const exitBtn = document.getElementById("exitBtn");
 const quizContainer = document.getElementById("quizContainer");
 const submitQuiz = document.getElementById("submitQuiz");
 const resultModal = document.getElementById("resultModal");
@@ -14,36 +13,31 @@ const telegramMessage = document.getElementById("telegramMessage");
 // إظهار التحذير أولًا
 warningModal.classList.remove("hidden");
 
-// أزرار التحذير
+// متابعة التحذير
 proceedBtn.onclick = () => {
     warningModal.classList.add("hidden");
     quizContainer.classList.remove("hidden");
-};
-
-exitBtn.onclick = () => {
-    window.close();
 };
 
 // تحليل الأسئلة
 submitQuiz.onclick = () => {
     const form = document.getElementById("quizForm");
     const answers = new FormData(form);
-    let score = 0;
-
-    for (let value of answers.values()) {
-        if (value === "صدقت أول جملة قرأتها" || value === "لا" || value === "بقعة ملعونة") {
-            score -= 2;
-        } else if (value === "محايد" || value === "ربما") {
-            score += 1;
-        } else {
-            score += 2;
-        }
-    }
+    const q = [];
+    for (let value of answers.values()) q.push(value);
 
     let finalMessage = "";
-    if (score < 5) finalMessage = "أنت تكذب على نفسك يجب أن تراجع نفسك قبل السير خلف قطيعهم.";
-    else if (score < 10) finalMessage = "أنت ذكي لكنك من أهل الرشيد ومخلتكم منحصرة في نطاق ضيق.";
-    else finalMessage = "تحليلك جيد لكن لا تثق بكل شيء حولك.";
+
+    // تحديد النتائج بدقة لكل سلسلة إجابات
+    if (q[0] === "مكان تربطني به ذكريات" && q[1] === "الجماعة ذوك" && q[2] === "كاملين") {
+        finalMessage = "أنت ذكي لكنك من أهل الرشيد (حرطاني)";
+    } else if (q[2] === "المهم ألا الإستفادة") {
+        finalMessage = "منافق لكنك لا تعرف الطريق إلى هدفك";
+    } else if (q[3] === "نعم" || q[3] === "واللهي") {
+        finalMessage = "لا عليك لست غبيا وحدك جميع من دخلو الرابط في الخانة نفسها إلا من ضغطو على الزر الصحيح في البداية";
+    } else {
+        finalMessage = "تحليلك جيد لكن ركز أكثر على إجاباتك القادمة";
+    }
 
     quizContainer.classList.add("hidden");
     resultModal.classList.remove("hidden");
