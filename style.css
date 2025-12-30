@@ -1,152 +1,60 @@
-/* الخطوط والمظهر العام */
-body {
-    margin: 0;
-    font-family: 'Tajawal', sans-serif;
-    background: #1e1e1e;
-    color: #fff;
-    overflow-x: hidden;
-}
-
-/* النوافذ المنبثقة */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-content {
+/* نافذة الأسئلة */
+.modal-content.quiz {
     background: #222;
-    padding: 25px;
+    color: #fff;
+    padding: 20px;
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
-    text-align: center;
+    max-height: 80vh; /* يسمح بارتفاع مرن */
+    overflow-y: auto; /* يسمح بالتمرير عند كثرة الأسئلة */
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
 }
 
-/* نافذة التحذير */
-.modal-content.warning {
-    background: rgba(255,255,255,0.85);
-    color: #000;
-    max-width: 400px;
-}
-
-/* أزرار عامة */
-.btn {
-    margin-top: 15px;
-    padding: 12px 25px;
-    background: linear-gradient(135deg, #4caf50, #81c784);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.2s, background 0.2s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, #43a047, #66bb6a);
-}
-
-/* أسئلة الاختبار */
+/* الأسئلة */
 .quiz-question {
     margin: 15px 0;
-    text-align: right;
 }
 
+/* خيارات الإجابة */
 .quiz-options button {
     display: block;
-    margin: 8px 0;
     width: 100%;
-    text-align: right;
+    margin: 6px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #555;
     background: #333;
     color: #fff;
-    border: 1px solid #555;
-    border-radius: 6px;
-    padding: 10px;
 }
 
+/* تحديد الخيار */
 .quiz-options button.selected {
     background: #4caf50;
     border-color: #4caf50;
 }
 
-/* النتائج */
-.result p#countdown {
-    font-size: 24px;
-    margin-top: 10px;
-}
-
-/* نافذة Telegram */
-.telegram textarea {
-    width: 90%;
-    height: 80px;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-}
-
 /* Media Queries لتحسين التوافق */
 @media (max-width: 768px) {
-    .modal-content {
-        padding: 20px;
-        width: 95%;
-    }
-
-    .btn {
-        font-size: 15px;
-        padding: 10px 20px;
+    .modal-content.quiz {
+        max-height: 85vh;
+        padding: 15px;
     }
 
     .quiz-options button {
-        font-size: 14px;
         padding: 8px;
-    }
-
-    .result p#countdown {
-        font-size: 20px;
-    }
-
-    .telegram textarea {
-        height: 70px;
         font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .modal-content {
-        padding: 15px;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 8px 18px;
+    .modal-content.quiz {
+        max-height: 90vh;
+        padding: 10px;
     }
 
     .quiz-options button {
-        font-size: 13px;
         padding: 6px;
-    }
-
-    .result p#countdown {
-        font-size: 18px;
-    }
-
-    .telegram textarea {
-        height: 60px;
         font-size: 13px;
     }
 }
