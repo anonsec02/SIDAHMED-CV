@@ -1,34 +1,111 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TELMEDEYN</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELMEDEYN | Psychological Interface</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>TELMEDEYN</h1>
-  <p class="subtitle">behavioral analysis interface</p>
-</header>
-
-<section class="warning">
-  ⚠ تجربة تحليل نفسي غير سياسية ولا تمثل أداة حقيقية
-</section>
-
-<main id="game"></main>
-
-<div id="overlay" class="overlay hidden">
-  <div id="modal" class="modal">
-    <p id="modal-text"></p>
-    <button onclick="closeModal()">متابعة</button>
-  </div>
+<!-- Warning Overlay -->
+<div id="warningOverlay" class="overlay active">
+    <div class="modal">
+        <h1>⚠️ تحذير</h1>
+        <p>
+            هذه ليست لعبة للتسلية البريئة.  
+            كل اختيار تقوم به سيتم تحليله.  
+            لا توجد إجابات صحيحة… فقط صادقة أو كاذبة.
+        </p>
+        <button id="startBtn" class="btn danger">أفهم العواقب</button>
+    </div>
 </div>
 
-<footer>
-  TELMEDEYN-tool (BETA) · Linux environments · sidahmed
-</footer>
+<!-- Notifications -->
+<div id="notification"></div>
+
+<!-- Main Container -->
+<div class="container">
+
+    <header>
+        <h1>TELMEDEYN</h1>
+        <p class="subtitle">
+            لعبة نفسية ساخرة | واجهة تحليل سلوكي  
+        </p>
+    </header>
+
+    <main id="game">
+
+        <!-- Question Template -->
+        <section class="question" data-score="identity">
+            <h2>ما هو الرشيد بالنسبة لك؟</h2>
+            <button>مكان مررت به</button>
+            <button>حكاية لم تنته</button>
+            <button>عبء لا أريد حمله</button>
+        </section>
+
+        <section class="question" data-score="group">
+            <h2>إلى أي جماعة تنتمي؟</h2>
+            <button>الجماعة ذوك</button>
+            <button>الأغلبية</button>
+            <button>محايد</button>
+        </section>
+
+        <section class="question" data-score="land">
+            <h2>كلمة تصف بها تلك البقعة من الأرض</h2>
+            <button>بقعة ملعونة</button>
+            <button>أرض لئيمة</button>
+            <button>محايد</button>
+        </section>
+
+        <section class="question" data-score="memory">
+            <h2>أيهم يحمل ذكرياتك؟</h2>
+            <button>تلمدين</button>
+            <button>الجديدة</button>
+            <button>الزيرة</button>
+            <button>لخنك</button>
+            <button>علك شربه</button>
+        </section>
+
+        <section class="question" data-score="hypocrisy">
+            <h2>أيهم تنافق له؟</h2>
+            <button>أهلنا ذوك</button>
+            <button>أهلنا لخرين</button>
+            <button>كاملين</button>
+        </section>
+
+        <section class="question" data-score="awareness">
+            <h2>هل أنت غبي وتصدق كل ما تقرأه؟</h2>
+            <button>لا</button>
+            <button>غير واثق</button>
+            <button>صدقت أول جملة قرأتها</button>
+        </section>
+
+        <section class="question" data-score="future">
+            <h2>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد؟</h2>
+            <button>لا</button>
+            <button>ربما</button>
+            <button>نعم</button>
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Result Overlay -->
+<div id="resultOverlay" class="overlay">
+    <div class="modal large">
+        <h1 id="resultTitle"></h1>
+        <p id="resultText"></p>
+
+        <textarea id="userMessage" placeholder="اكتب رسالة قصيرة إن كنت تملك الجرأة..."></textarea>
+
+        <div class="actions">
+            <button id="sendTelegram" class="btn success">إرسال عبر تيليجرام</button>
+            <button id="exitBtn" class="btn">الخروج</button>
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
