@@ -12,13 +12,14 @@ const telegramMessage = document.getElementById('telegramMessage');
 let answers = [];
 let currentQuestion = 0;
 
-// فتح اللعبة بعد التحذير
+// متابعة من التحذير
 proceedBtn.addEventListener('click', () => {
     warningOverlay.classList.remove('active');
     gameContainer.classList.remove('hidden');
     showQuestion(currentQuestion);
 });
 
+// عرض السؤال الحالي
 function showQuestion(index){
     questions.forEach(q => q.classList.add('hidden'));
     if(questions[index]){
@@ -38,7 +39,7 @@ function showQuestion(index){
     }
 }
 
-// عرض النتائج
+// عرض النتيجة
 function showResult(){
     gameContainer.classList.add('hidden');
 
@@ -65,7 +66,7 @@ function showResult(){
     },1000);
 }
 
-// نافة تيليجرام
+// نافذة تيليجرام
 sendTelegram.addEventListener('click', () => {
     const message = encodeURIComponent(telegramMessage.value);
     if(message){
