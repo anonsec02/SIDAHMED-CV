@@ -65,7 +65,7 @@ function showResult(){
     },1000);
 }
 
-// نافذة تيليجرام
+// نافة تيليجرام
 sendTelegram.addEventListener('click', () => {
     const message = encodeURIComponent(telegramMessage.value);
     if(message){
