@@ -1,142 +1,180 @@
-/* إعدادات عامة للصفحة */
-body {
-    font-family: 'Arial', sans-serif;
-    background: #f5f5f5; /* لون عام احترافي */
-    color: #111;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-/* تصميم جميع النوافذ المنبثقة */
+/* =======================
+   إعدادات عامة لجميع النوافذ
+   ======================= */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;
     z-index: 1000;
+    display: none; /* تظهر عند التفعيل فقط */
     background: rgba(255, 255, 255, 0.95);
-    padding: 25px 30px;
+    color: #000;
     border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     width: 90%;
-    max-width: 480px;
-    max-height: 80vh;
+    max-width: 500px;
+    max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
     transition: all 0.3s ease-in-out;
 }
 
-/* العناوين داخل النوافذ */
-.modal h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #111;
-}
-
-/* نصوص الأسئلة */
-.modal p {
-    font-size: 1em;
-    color: #222;
-    margin: 12px 0 6px 0;
-}
-
-/* اختيار وإدخال المستخدم */
-.modal select, .modal textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 15px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-/* الأزرار العامة */
-.modal button {
-    background-color: #111; /* أسود احترافي */
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    margin: 8px 0;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: all 0.2s ease-in-out;
-}
-
-.modal button:hover {
-    background-color: #333;
-    transform: scale(1.05);
-}
-
-/* العد التنازلي */
-#countdown {
-    font-weight: bold;
-    font-size: 1.6em;
-    margin-top: 10px;
-}
-
-/* نافذة التحذير بلون أبيض شبه شفاف */
-.warning {
-    background: rgba(255, 255, 255, 0.85);
-    max-width: 400px;
-    padding: 20px 25px;
+/* نافذة التحذير */
+.modal.warning {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #f1c40f; /* ذهبي */
+    color: #000;
 }
 
 /* نافذة الأسئلة */
-.quiz select {
-    background: #f9f9f9;
-    border: 1px solid #aaa;
-    color: #111;
-}
-
-.quiz button {
-    background-color: #0056b3; /* أزرق احترافي */
+.modal.quiz {
+    background: #222;
     color: #fff;
 }
 
-.quiz button:hover {
-    background-color: #003d80;
-}
-
-/* نافذة النتيجة */
-.result {
-    background: #ffffff;
-    color: #111;
-}
-
-/* نافذة تيليجرام */
-.telegram textarea {
-    min-height: 80px;
-    resize: none;
-    border: 1px solid #ccc;
-}
-
-.telegram button {
-    background-color: #0088cc; /* أزرق تيليجرام */
+/* نافذة نتيجة التحليل */
+.modal.result {
+    background: #333;
     color: #fff;
 }
 
-.telegram button:hover {
-    background-color: #006699;
+/* نافذة إرسال رسالة تيليجرام */
+.modal.telegram {
+    background: #0088cc;
+    color: #fff;
 }
 
-/* توافق مع جميع الشاشات */
-@media screen and (max-width: 600px) {
+/* =======================
+   العناوين
+   ======================= */
+.modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* =======================
+   الأسئلة وخيارات الإجابة
+   ======================= */
+.quiz-question {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.quiz-options button {
+    display: block;
+    width: 100%;
+    margin: 6px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #444;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.quiz-options button:hover {
+    background: #555;
+}
+
+.quiz-options button:active {
+    transform: scale(0.97);
+}
+
+.quiz-options button.selected {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+
+/* =======================
+   أزرار عامة
+   ======================= */
+button.general-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+button.general-btn:hover {
+    opacity: 0.85;
+}
+
+button.general-btn:active {
+    transform: scale(0.97);
+}
+
+/* =======================
+   الرسالة التحذيرية داخل نافذة التحذير
+   ======================= */
+.warning-message {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* =======================
+   العد التنازلي في نافذة النتيجة
+   ======================= */
+.countdown {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* =======================
+   Media Queries لتحسين التوافق
+   ======================= */
+@media (max-width: 768px) {
     .modal {
-        width: 95%;
-        padding: 20px;
+        padding: 15px;
+        max-height: 85vh;
     }
+
+    .quiz-options button {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
     .modal h2 {
-        font-size: 1.3em;
+        font-size: 1.3rem;
     }
-    .modal button {
-        padding: 10px 20px;
-        font-size: 0.9em;
+}
+
+@media (max-width: 480px) {
+    .modal {
+        padding: 12px;
+        max-height: 90vh;
     }
-    .modal select, .modal textarea {
-        font-size: 0.9em;
+
+    .quiz-options button {
+        padding: 8px;
+        font-size: 0.9rem;
     }
-} 
+
+    .modal h2 {
+        font-size: 1.1rem;
+    }
+}
+
+/* =======================
+   التأثيرات العامة للظهور والاختفاء
+   ======================= */
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.hide {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+    pointer-events: none;
+}
