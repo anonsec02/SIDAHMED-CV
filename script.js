@@ -1,132 +1,102 @@
-const questions = [
+// الأسئلة والخيارات
+const quizData = [
     {
-        text: "ماهو الرشيد بالنسبة لك؟",
-        answers: [
-            { text: "مكان مررت به", value: 1 },
-            { text: "قصة لم تنتهي بعد", value: 2 },
-            { text: "قرية منفوخة إعلاميا", value: 3 },
-            { text: "مكان تربطني به ذكريات", value: 4 }
-        ]
+        question: "ماهو الرشيد بالنسبة لك؟",
+        options: ["مكان مررت به", "قصة لم تنتهي بعد", "قرية منفوخة إعلاميا", "مكان تربطني به ذكريات"]
     },
     {
-        text: "إلى أي جماعة تنتمي؟",
-        answers: [
-            { text: "الجماعة ذوك", value: 1 },
-            { text: "الجماعة الأخرى", value: 2 },
-            { text: "ماني أمركهم فشي كاملين", value: 3 }
-        ]
+        question: "إلى أي جماعة تنتمي؟",
+        options: ["الجماعة ذوك", "الجماعة الأخرى", "ماني أمركهم فشي كاملين"]
     },
     {
-        text: "أيهم تنافق له؟",
-        answers: [
-            { text: "ألا ايهم مسْ لبنتو", value: 1 },
-            { text: "كاملين", value: 2 },
-            { text: "المهم ألا الإستفادة", value: 3 }
-        ]
+        question: "أيهم تنافق له؟",
+        options: ["ألا ايهم مسْ لبنتو", "كاملين", "المهم ألا الإستفادة"]
     },
     {
-        text: "هل أنت غبي وتصدق كل ما تقرأه او تسمعه دون تحليل حيادي؟",
-        answers: [
-            { text: "نعم", value: 1 },
-            { text: "واللهي", value: 2 },
-            { text: "حك بعد", value: 3 }
-        ]
+        question: "هل أنت غبي وتصدق كل ما تقرأه او تسمعه دون تحليل حيادي؟",
+        options: ["نعم", "واللهي", "حك بعد"]
     }
 ];
 
-const results = [
-    { range: [4,5], text: "أنت ذكي لكنك من أهل الرشيد (حرطاني)" },
-    { range: [6,7], text: "منافق لكنك لا تعرف الطريق إلى هدفك" },
-    { range: [8,12], text: "لا عليك لست غبيا وحدك جميع من دخلو الرابط في الخانة نفسها إلا من ضغطو على الزر الصحيح في البداية" }
-];
+let answers = [];
 
-let currentQuestion = 0;
-let score = 0;
-
-// العناصر
-const warningOverlay = document.getElementById('warningOverlay');
-const continueBtn = document.getElementById('continueBtn');
-const exitBtn = document.getElementById('exitBtn');
-
-const questionOverlay = document.getElementById('questionOverlay');
-const questionContainer = document.getElementById('questionContainer');
-
-const resultOverlay = document.getElementById('resultOverlay');
-const resultText = document.getElementById('resultText');
-const countdownSpan = document.getElementById('countdown');
-
-const telegramOverlay = document.getElementById('telegramOverlay');
-const telegramMessage = document.getElementById('telegramMessage');
-const sendTelegram = document.getElementById('sendTelegram');
-
-// وظائف
-continueBtn.addEventListener('click', () => {
-    warningOverlay.classList.remove('active');
-    questionOverlay.classList.add('active');
-    showQuestion();
-});
-
-exitBtn.addEventListener('click', () => {
-    window.close();
-});
-
-function showQuestion() {
-    questionContainer.innerHTML = '';
-    const q = questions[currentQuestion];
-
-    const qElem = document.createElement('div');
-    qElem.classList.add('question');
-    qElem.innerHTML = `<h3>${q.text}</h3>`;
-    questionContainer.appendChild(qElem);
-
-    q.answers.forEach(answer => {
-        const btn = document.createElement('button');
-        btn.classList.add('answerBtn', 'primary-btn');
-        btn.innerText = answer.text;
-        btn.addEventListener('click', () => selectAnswer(answer.value));
-        questionContainer.appendChild(btn);
+// عرض الأسئلة
+const quizContainer = document.getElementById("quiz-container");
+quizData.forEach((q, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "quiz-question";
+    qDiv.innerHTML = `<p>${q.question}</p>`;
+    const optionsDiv = document.createElement("div");
+    optionsDiv.className = "quiz-options";
+    q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt;
+        btn.addEventListener("click", () => {
+            answers[index] = opt;
+            Array.from(optionsDiv.children).forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+        });
+        optionsDiv.appendChild(btn);
     });
-}
+    qDiv.appendChild(optionsDiv);
+    quizContainer.appendChild(qDiv);
+});
 
-function selectAnswer(value) {
-    score += value;
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
-        questionOverlay.classList.remove('active');
-        showResult();
-    }
-}
+// عرض نافذة التحذير
+const warningModal = document.getElementById("warning-modal");
+const startBtn = document.getElementById("start-btn");
+const quizModal = document.getElementById("quiz-modal");
+startBtn.addEventListener("click", () => {
+    warningModal.classList.remove("show");
+    quizModal.classList.add("show");
+});
 
-function showResult() {
-    // تحديد النتيجة
-    let finalResult = results[results.length-1].text; // default
-    for(let res of results) {
-        if(score >= res.range[0] && score <= res.range[1]) {
-            finalResult = res.text;
-            break;
-        }
-    }
-    resultText.innerText = finalResult;
-    resultOverlay.classList.add('active');
+// إرسال الأسئلة
+const submitQuiz = document.getElementById("submit-quiz");
+const resultModal = document.getElementById("result-modal");
+const resultText = document.getElementById("result-text");
+const countdownEl = document.getElementById("countdown");
 
+submitQuiz.addEventListener("click", () => {
+    quizModal.classList.remove("show");
+
+    // تحليل الإجابات بدقة
+    let res = analyzeAnswers(answers);
+    resultText.textContent = res;
+
+    // عرض النتائج مع عد تنازلي 12 ثانية
     let countdown = 12;
-    countdownSpan.innerText = countdown;
-    const timer = setInterval(() => {
+    countdownEl.textContent = countdown;
+    resultModal.classList.add("show");
+
+    let timer = setInterval(() => {
         countdown--;
-        countdownSpan.innerText = countdown;
-        if(countdown <=0) {
+        countdownEl.textContent = countdown;
+        if (countdown <= 0) {
             clearInterval(timer);
-            resultOverlay.classList.remove('active');
-            telegramOverlay.classList.add('active');
-            telegramMessage.value = finalResult;
+            resultModal.classList.remove("show");
+            showTelegramModal();
         }
     }, 1000);
+});
+
+// تحليل الإجابات بدقة لتحديد النتيجة
+function analyzeAnswers(ans) {
+    if(ans[0] === "مكان تربطني به ذكريات" && ans[1] === "الجماعة ذوك") return "أنت ذكي لكنك من أهل الرشيد (حرطاني)";
+    if(ans[2] === "المهم ألا الإستفادة") return "منافق لكنك لا تعرف الطريق إلى هدفك";
+    if(ans[3] === "واللهي") return "لا عليك لست غبيا وحدك جميع من دخلو الرابط في الخانة نفسها إلا من ضغطو على الزر الصحيح في البداية";
+    return "نتيجة عامة غير محددة";
 }
 
-sendTelegram.addEventListener('click', () => {
-    const msg = encodeURIComponent(telegramMessage.value);
-    const telegramLink = `https://t.me/YourTelegramUsername?start=${msg}`;
-    window.open(telegramLink, '_blank');
+// نافذة Telegram
+const telegramModal = document.getElementById("telegram-modal");
+function showTelegramModal() {
+    telegramModal.classList.add("show");
+}
+
+const sendTelegramBtn = document.getElementById("send-telegram");
+sendTelegramBtn.addEventListener("click", () => {
+    const message = encodeURIComponent(document.getElementById("telegram-message").value);
+    const telegramLink = `https://t.me/YourTelegramUsername?start=${message}`;
+    window.open(telegramLink, "_blank");
 });
