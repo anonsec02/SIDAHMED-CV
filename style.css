@@ -1,69 +1,116 @@
+/* عام */
 body {
-    background-color: white;
-    color: black;
-    font-family: "Cairo", sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    background-color: #fff;
+    color: #000;
 }
 
-.hidden { display: none; }
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+h1, h2, h3, p {
+    margin: 10px 0;
 }
 
-.header h1, .header h2 {
-    text-align: center;
-}
-
-.header h2 {
-    font-size: 1.1em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.question { margin-bottom: 15px; }
-.question label { display: block; font-weight: bold; margin-bottom: 5px; }
-select { width: 100%; padding: 8px; font-size: 1em; }
-
-button {
+/* أزرار */
+.btn {
     padding: 10px 20px;
-    background-color: black;
-    color: white;
+    margin: 5px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-button:hover { background-color: #333; }
+.btn.primary {
+    background-color: #000;
+    color: #fff;
+}
 
-/* النوافذ المنبثقة */
-.popup {
+.btn.primary:hover {
+    background-color: #333;
+}
+
+.btn.danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn.danger:hover {
+    background-color: #c0392b;
+}
+
+.btn.neutral {
+    background-color: #f1c40f;
+    color: #000;
+}
+
+.btn.neutral:hover {
+    background-color: #d4ac0d;
+}
+
+/* النوافذ */
+.modal {
     position: fixed;
-    top:0; left:0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0,0,0,0.6);
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: rgba(218, 165, 32, 0.85); /* ذهبي شفاف */
-    z-index: 1000;
+    align-items: center;
+    z-index: 100;
 }
 
-.popup-content {
-    background: rgba(0,0,0,0.85);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
+.modal-content {
+    background-color: rgba(255, 215, 0, 0.9); /* ذهبي شفاف */
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
     max-width: 500px;
     text-align: center;
 }
 
-.popup-content.warning { background: rgba(218,165,32,0.9); color: black; }
-.popup-content.final { background: rgba(0,0,0,0.85); color: white; }
-.popup-content.telegram { background: rgba(0,0,0,0.85); color: white; }
+.modal-content.warning {
+    background-color: rgba(255, 223, 0, 0.9);
+}
 
-#countdown { font-size: 2em; font-weight: bold; margin-top: 10px; }
-#telegram-msg { width: 80%; padding: 8px; margin: 10px 0; }
+.modal-content.result {
+    background-color: rgba(0, 128, 0, 0.9);
+    color: #fff;
+}
+
+.modal-content.telegram {
+    background-color: #0088cc;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* الأسئلة */
+#quizContainer {
+    padding: 20px;
+}
+
+.question {
+    margin: 15px 0;
+}
+
+select {
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* textarea */
+#telegramMessage {
+    width: 90%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+}
