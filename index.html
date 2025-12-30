@@ -12,9 +12,8 @@
     <div id="warningModal" class="modal">
         <div class="modal-content warning">
             <h2>⚠️ تحذير!</h2>
-            <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN. قد تصادف محتوى قد يزعجك أو يجعلك تعيد التفكير.</p>
+            <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN. قد تصادف محتوى يثير التفكير ويعيد ترتيب أفكارك.</p>
             <div class="modal-buttons">
-                <button id="exitBtn" class="btn danger">خروج</button>
                 <button id="proceedBtn" class="btn neutral">متابعة</button>
             </div>
         </div>
@@ -27,65 +26,37 @@
             <div class="question">
                 <p>ماهو الرشيد بالنسبة لك؟</p>
                 <select name="q1">
-                    <option value="محايد">محايد</option>
-                    <option value="ذكريات">ذكريات</option>
-                    <option value="مزعج">مزعج</option>
+                    <option value="مكان مررت به">مكان مررت به</option>
+                    <option value="قصة لم تنتهي بعد">قصة لم تنتهي بعد</option>
+                    <option value="قرية منفوخة إعلاميا">قرية منفوخة إعلاميا</option>
+                    <option value="مكان تربطني به ذكريات">مكان تربطني به ذكريات</option>
                 </select>
             </div>
 
             <div class="question">
                 <p>إلى أي جماعة تنتمي؟</p>
                 <select name="q2">
-                    <option value="الجماعه ذوك">الجماعه ذوك</option>
-                    <option value="الأغلبية">الأغلبية</option>
-                    <option value="محايد">محايد</option>
-                </select>
-            </div>
-
-            <div class="question">
-                <p>كلمة تصف بها تلك البقعة من الأرض:</p>
-                <select name="q3">
-                    <option value="بقعة ملعونة">بقعة ملعونة</option>
-                    <option value="أرض لئيمة">أرض لئيمة</option>
-                    <option value="محايد">محايد</option>
-                </select>
-            </div>
-
-            <div class="question">
-                <p>أيهم يحمل ذكرياتك؟</p>
-                <select name="q4">
-                    <option value="تلمدين">تلمدين</option>
-                    <option value="الجديدة">الجديدة</option>
-                    <option value="الزيرة">الزيرة</option>
-                    <option value="لخنك">لخنك</option>
-                    <option value="علك شربه">علك شربه</option>
+                    <option value="الجماعة ذوك">الجماعة ذوك</option>
+                    <option value="الجماعة الأخرى">الجماعة الأخرى</option>
+                    <option value="ماني أمركهم فشي كاملين">ماني أمركهم فشي كاملين</option>
                 </select>
             </div>
 
             <div class="question">
                 <p>أيهم تنافق له؟</p>
-                <select name="q5">
-                    <option value="اهلنا ذوك">اهلنا ذوك</option>
-                    <option value="أهلنا لخرين">أهلنا لخرين</option>
+                <select name="q3">
+                    <option value="ألا ايهم مسْ لبنتو">ألا ايهم مسْ لبنتو</option>
                     <option value="كاملين">كاملين</option>
+                    <option value="المهم ألا الإستفادة">المهم ألا الإستفادة</option>
                 </select>
             </div>
 
             <div class="question">
-                <p>هل أنت غبي وتصدق كل ما تقرأه؟</p>
-                <select name="q6">
-                    <option value="لا">لا</option>
-                    <option value="غير واثق">غير واثق</option>
-                    <option value="صدقت أول جملة قرأتها">صدقت أول جملة قرأتها</option>
-                </select>
-            </div>
-
-            <div class="question">
-                <p>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد أو المنطقة؟</p>
-                <select name="q7">
-                    <option value="لا">لا</option>
-                    <option value="ربما">ربما</option>
+                <p>هل أنت غبي وتصدق كل ما تقرأه أو تسمعه دون تحليل حيادي؟</p>
+                <select name="q4">
                     <option value="نعم">نعم</option>
+                    <option value="واللهي">واللهي</option>
+                    <option value="حك بعد">حك بعد</option>
                 </select>
             </div>
 
@@ -93,7 +64,7 @@
         </form>
     </div>
 
-    <!-- نافذة النتيجة والتحذير النهائي -->
+    <!-- نافذة النتيجة -->
     <div id="resultModal" class="modal hidden">
         <div class="modal-content result">
             <h2>نتيجة التحليل السلوكي</h2>
@@ -102,7 +73,7 @@
         </div>
     </div>
 
-    <!-- نافذة إرسال الرسالة لتليجرام -->
+    <!-- نافذة Telegram -->
     <div id="telegramModal" class="modal hidden">
         <div class="modal-content telegram">
             <h2>إرسال رسالة مباشرة إلى SidAhmed</h2>
