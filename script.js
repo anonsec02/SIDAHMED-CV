@@ -1,6 +1,5 @@
 const warningOverlay = document.getElementById('warningOverlay');
 const proceedBtn = document.getElementById('proceedBtn');
-const exitBtn = document.getElementById('exitBtn');
 const gameContainer = document.getElementById('gameContainer');
 const answerBtns = document.querySelectorAll('.answerBtn');
 const resultOverlay = document.getElementById('resultOverlay');
@@ -12,14 +11,10 @@ const telegramMessage = document.getElementById('telegramMessage');
 
 let answers = [];
 
-// تحكم نافذة التحذير
+// نافذة التحذير
 proceedBtn.addEventListener('click', () => {
     warningOverlay.classList.add('hidden');
     gameContainer.classList.remove('hidden');
-});
-
-exitBtn.addEventListener('click', () => {
-    window.close(); // طرد الزائر
 });
 
 // أسئلة اللعبة
@@ -54,7 +49,7 @@ function showResult() {
     resultText.textContent = finalResult;
     resultOverlay.classList.remove("hidden");
 
-    // عد تنازلي 12 ثانية
+    // عد تنازلي 12 ثانية قبل نافذة تيليجرام
     let count = 12;
     countdown.textContent = count;
     const timer = setInterval(()=>{
