@@ -3,106 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</title>
+    <title>لعبة TELMEDEYN الساخرة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
 
-        <header class="header">
-            <h1>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</h1>
-            <h2>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h2>
-        </header>
-
-        <main class="main-content hidden" id="main-content">
-            <form id="psych-form">
-                <div class="question">
-                    <label>ماهو الرشيد بالنسبة لك؟</label>
-                    <select name="rashid">
-                        <option value="محايد">محايد</option>
-                        <option value="أرض الأحبة">أرض الأحبة</option>
-                        <option value="مكان مستفز">مكان مستفز</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>إلى أي جماعة تنتمي؟</label>
-                    <select name="group">
-                        <option value="الجماعه ذوك">الجماعه ذوك</option>
-                        <option value="الأغلبية">الأغلبية</option>
-                        <option value="محايد">محايد</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>كلمة تصف بها تلك البقعة من الأرض</label>
-                    <select name="land">
-                        <option value="بقعة ملعونة">بقعة ملعونة</option>
-                        <option value="أرض لئيمة">أرض لئيمة</option>
-                        <option value="محايد">محايد</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>أيهم يحمل ذكرياتك؟</label>
-                    <select name="memories">
-                        <option value="تلمدين">تلمدين</option>
-                        <option value="الجديدة">الجديدة</option>
-                        <option value="الزيرة">الزيرة</option>
-                        <option value="لخنك">لخنك</option>
-                        <option value="علك شربه">علك شربه</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>أيهم تنافق له؟</label>
-                    <select name="flatter">
-                        <option value="أهلنا ذوك">أهلنا ذوك</option>
-                        <option value="أهلنا لخرين">أهلنا لخرين</option>
-                        <option value="كاملين">كاملين</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>هل أنت غبي و تصدق كل ما تقرأه؟</label>
-                    <select name="stupid">
-                        <option value="لا">لا</option>
-                        <option value="غير واثق">غير واثق</option>
-                        <option value="صدقت أول جملة قرأتها">صدقت أول جملة قرأتها</option>
-                    </select>
-                </div>
-                <div class="question">
-                    <label>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد أو المنطقة؟</label>
-                    <select name="telmedeyn">
-                        <option value="لا">لا</option>
-                        <option value="ربما">ربما</option>
-                        <option value="نعم">نعم</option>
-                    </select>
-                </div>
-
-                <button type="button" id="analyze-btn">تحليل</button>
-            </form>
-        </main>
-    </div>
-
-    <!-- نافذة التحذير -->
-    <div id="warning-popup" class="popup">
-        <div class="popup-content warning">
-            <p>⚠️ تحذير: هذه اللعبة قد تؤثر على حالتك النفسية، هل ترغب بالمتابعة؟</p>
-            <button id="continue-btn">متابعة</button>
-            <button id="exit-btn">خروج</button>
+    <!-- نافذة التحذير الأولى -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content warning">
+            <h2>⚠️ تحذير!</h2>
+            <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN. قد تصادف محتوى قد يزعجك أو يجعلك تعيد التفكير.</p>
+            <div class="modal-buttons">
+                <button id="exitBtn" class="btn danger">خروج</button>
+                <button id="proceedBtn" class="btn neutral">متابعة</button>
+            </div>
         </div>
     </div>
 
-    <!-- نافذة رسالة الختام -->
-    <div id="final-popup" class="popup hidden">
-        <div class="popup-content final">
-            <p id="final-text"></p>
-            <p id="countdown">5</p>
+    <!-- واجهة الأسئلة -->
+    <div id="quizContainer" class="hidden">
+        <h1>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>ماهو الرشيد بالنسبة لك؟</p>
+                <select name="q1">
+                    <option value="محايد">محايد</option>
+                    <option value="ذكريات">ذكريات</option>
+                    <option value="مزعج">مزعج</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>إلى أي جماعة تنتمي؟</p>
+                <select name="q2">
+                    <option value="الجماعه ذوك">الجماعه ذوك</option>
+                    <option value="الأغلبية">الأغلبية</option>
+                    <option value="محايد">محايد</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>كلمة تصف بها تلك البقعة من الأرض:</p>
+                <select name="q3">
+                    <option value="بقعة ملعونة">بقعة ملعونة</option>
+                    <option value="أرض لئيمة">أرض لئيمة</option>
+                    <option value="محايد">محايد</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>أيهم يحمل ذكرياتك؟</p>
+                <select name="q4">
+                    <option value="تلمدين">تلمدين</option>
+                    <option value="الجديدة">الجديدة</option>
+                    <option value="الزيرة">الزيرة</option>
+                    <option value="لخنك">لخنك</option>
+                    <option value="علك شربه">علك شربه</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>أيهم تنافق له؟</p>
+                <select name="q5">
+                    <option value="اهلنا ذوك">اهلنا ذوك</option>
+                    <option value="أهلنا لخرين">أهلنا لخرين</option>
+                    <option value="كاملين">كاملين</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>هل أنت غبي وتصدق كل ما تقرأه؟</p>
+                <select name="q6">
+                    <option value="لا">لا</option>
+                    <option value="غير واثق">غير واثق</option>
+                    <option value="صدقت أول جملة قرأتها">صدقت أول جملة قرأتها</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <p>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد أو المنطقة؟</p>
+                <select name="q7">
+                    <option value="لا">لا</option>
+                    <option value="ربما">ربما</option>
+                    <option value="نعم">نعم</option>
+                </select>
+            </div>
+
+            <button type="button" id="submitQuiz" class="btn primary">تحليل</button>
+        </form>
+    </div>
+
+    <!-- نافذة النتيجة والتحذير النهائي -->
+    <div id="resultModal" class="modal hidden">
+        <div class="modal-content result">
+            <h2>نتيجة التحليل السلوكي</h2>
+            <p id="resultText"></p>
+            <p>ستظهر نافذة إرسال الرسالة خلال <span id="countdown">5</span> ثواني...</p>
         </div>
     </div>
 
-    <!-- نافذة Telegram -->
-    <div id="telegram-popup" class="popup hidden">
-        <div class="popup-content telegram">
-            <p>💬 أرسل رسالتك إلى sidahmed عبر Telegram</p>
-            <input type="text" id="telegram-msg" placeholder="اكتب رسالتك هنا">
-            <button id="send-telegram">إرسال</button>
+    <!-- نافذة إرسال الرسالة لتليجرام -->
+    <div id="telegramModal" class="modal hidden">
+        <div class="modal-content telegram">
+            <h2>إرسال رسالة مباشرة إلى SidAhmed</h2>
+            <textarea id="telegramMessage" placeholder="اكتب رسالتك هنا..."></textarea>
+            <button id="sendTelegram" class="btn primary">فتح تيليجرام مع الرسالة</button>
         </div>
     </div>
 
