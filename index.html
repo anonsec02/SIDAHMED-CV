@@ -3,76 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة تحليل سلوكي</title>
+    <title>لعبة نفسية ساخرة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- نافذة التحذير -->
-    <div id="warningOverlay" class="overlay visible">
+    <div id="warningOverlay" class="overlay">
         <div class="warning-box">
-            <h2>تحذير!</h2>
+            <h2>⚠️ تحذير!</h2>
             <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</p>
-            <button id="startGameBtn">متابعة</button>
+            <button id="proceedBtn" class="btn-primary">متابعة</button>
+            <button id="exitBtn" class="btn-secondary">خروج</button>
         </div>
     </div>
 
-    <!-- واجهة الأسئلة -->
-    <div id="gameContainer" class="game-container hidden">
-        <h1 class="game-title">هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h1>
-
-        <div class="question-box">
-            <p class="question-text">ماهو الرشيد بالنسبة لك؟</p>
-            <div class="options">
-                <button class="option-btn" data-value="0">مكان مررت به</button>
-                <button class="option-btn" data-value="1">قصة لم تنتهي بعد</button>
-                <button class="option-btn" data-value="2">قرية منفوخة إعلاميا</button>
-                <button class="option-btn" data-value="3">مكان تربطني به ذكريات</button>
-            </div>
+    <!-- واجهة اللعبة -->
+    <div id="gameContainer" class="hidden">
+        <h1>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h1>
+        <div class="question" data-index="0">
+            <p>ماهو الرشيد بالنسبة لك؟</p>
+            <button class="answerBtn" data-value="0">مكان مررت به</button>
+            <button class="answerBtn" data-value="1">قصة لم تنتهي بعد</button>
+            <button class="answerBtn" data-value="2">قرية منفوخة إعلاميا</button>
+            <button class="answerBtn" data-value="3">مكان تربطني به ذكريات</button>
         </div>
-
-        <div class="question-box">
-            <p class="question-text">إلى أي جماعة تنتمي؟</p>
-            <div class="options">
-                <button class="option-btn" data-value="0">الجماعة ذوك</button>
-                <button class="option-btn" data-value="1">الجماعة الأخرى</button>
-                <button class="option-btn" data-value="2">ماني أمركهم فشي كاملين</button>
-            </div>
+        <div class="question" data-index="1">
+            <p>إلى أي جماعة تنتمي؟</p>
+            <button class="answerBtn" data-value="0">الجماعة ذوك</button>
+            <button class="answerBtn" data-value="1">الجماعة الأخرى</button>
+            <button class="answerBtn" data-value="2">ماني أمركهم فشي كاملين</button>
         </div>
-
-        <div class="question-box">
-            <p class="question-text">أيهم تنافق له؟</p>
-            <div class="options">
-                <button class="option-btn" data-value="0">ألا ايهم مسْ لبنتو</button>
-                <button class="option-btn" data-value="1">كاملين</button>
-                <button class="option-btn" data-value="2">المهم ألا الإستفادة</button>
-            </div>
+        <div class="question" data-index="2">
+            <p>أيهم تنافق له؟</p>
+            <button class="answerBtn" data-value="0">ألا ايهم مسْ لبنتو</button>
+            <button class="answerBtn" data-value="1">كاملين</button>
+            <button class="answerBtn" data-value="2">المهم ألا الإستفادة</button>
         </div>
-
-        <div class="question-box">
-            <p class="question-text">هل أنت غبي وتصدق كل ما تقرأه او تسمعه دون تحليل حيادي؟</p>
-            <div class="options">
-                <button class="option-btn" data-value="0">نعم</button>
-                <button class="option-btn" data-value="1">واللهي</button>
-                <button class="option-btn" data-value="2">حك بعد</button>
-            </div>
+        <div class="question" data-index="3">
+            <p>هل أنت غبي وتصدق كل ما تقرأه او تسمعه دون تحليل حيادي؟</p>
+            <button class="answerBtn" data-value="0">نعم</button>
+            <button class="answerBtn" data-value="1">واللهي</button>
+            <button class="answerBtn" data-value="2">حك بعد</button>
         </div>
     </div>
 
-    <!-- نافذة النتائج -->
+    <!-- نافذة النتيجة -->
     <div id="resultOverlay" class="overlay hidden">
         <div class="result-box">
+            <h2>نتيجة التحليل السلوكي</h2>
             <p id="resultText"></p>
-            <p id="countdown">5</p>
+            <p>العد التنازلي: <span id="countdown">12</span> ثانية</p>
         </div>
     </div>
 
-    <!-- نافذة إرسال رسالة تيليجرام -->
+    <!-- نافذة تيليجرام -->
     <div id="telegramOverlay" class="overlay hidden">
         <div class="telegram-box">
-            <h2>أرسل رسالتك</h2>
-            <textarea id="telegramMessage" placeholder="اكتب رسالتك هنا..."></textarea>
-            <button id="sendTelegramBtn">إرسال</button>
+            <h2>أرسل رسالة إلى SidAhmed</h2>
+            <input type="text" id="telegramMessage" placeholder="اكتب رسالتك هنا">
+            <button id="sendTelegram" class="btn-primary">إرسال</button>
         </div>
     </div>
 
