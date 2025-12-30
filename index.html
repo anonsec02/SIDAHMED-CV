@@ -3,110 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TELMEDEYN | Psychological Interface</title>
+    <title>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</h1>
+            <h2>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h2>
+        </header>
 
-<!-- Warning Overlay -->
-<div id="warningOverlay" class="overlay active">
-    <div class="modal">
-        <h1>⚠️ تحذير</h1>
-        <p>
-            هذه ليست لعبة للتسلية البريئة.  
-            كل اختيار تقوم به سيتم تحليله.  
-            لا توجد إجابات صحيحة… فقط صادقة أو كاذبة.
-        </p>
-        <button id="startBtn" class="btn danger">أفهم العواقب</button>
+        <main class="main-content">
+            <form id="psych-form">
+                <div class="question">
+                    <label>ماهو الرشيد بالنسبة لك؟</label>
+                    <select name="rashid">
+                        <option value="محايد">محايد</option>
+                        <option value="أرض الأحبة">أرض الأحبة</option>
+                        <option value="مكان مستفز">مكان مستفز</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>إلى أي جماعة تنتمي؟</label>
+                    <select name="group">
+                        <option value="الجماعه ذوك">الجماعه ذوك</option>
+                        <option value="الأغلبية">الأغلبية</option>
+                        <option value="محايد">محايد</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>كلمة تصف بها تلك البقعة من الأرض</label>
+                    <select name="land">
+                        <option value="بقعة ملعونة">بقعة ملعونة</option>
+                        <option value="أرض لئيمة">أرض لئيمة</option>
+                        <option value="محايد">محايد</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>أيهم يحمل ذكرياتك؟</label>
+                    <select name="memories">
+                        <option value="تلمدين">تلمدين</option>
+                        <option value="الجديدة">الجديدة</option>
+                        <option value="الزيرة">الزيرة</option>
+                        <option value="لخنك">لخنك</option>
+                        <option value="علك شربه">علك شربه</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>أيهم تنافق له؟</label>
+                    <select name="flatter">
+                        <option value="أهلنا ذوك">أهلنا ذوك</option>
+                        <option value="أهلنا لخرين">أهلنا لخرين</option>
+                        <option value="كاملين">كاملين</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>هل أنت غبي و تصدق كل ما تقرأه؟</label>
+                    <select name="stupid">
+                        <option value="لا">لا</option>
+                        <option value="غير واثق">غير واثق</option>
+                        <option value="صدقت أول جملة قرأتها">صدقت أول جملة قرأتها</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد أو المنطقة؟</label>
+                    <select name="telmedeyn">
+                        <option value="لا">لا</option>
+                        <option value="ربما">ربما</option>
+                        <option value="نعم">نعم</option>
+                    </select>
+                </div>
+
+                <button type="button" id="analyze-btn">تحليل</button>
+            </form>
+        </main>
     </div>
-</div>
 
-<!-- Notifications -->
-<div id="notification"></div>
-
-<!-- Main Container -->
-<div class="container">
-
-    <header>
-        <h1>TELMEDEYN</h1>
-        <p class="subtitle">
-            لعبة نفسية ساخرة | واجهة تحليل سلوكي  
-        </p>
-    </header>
-
-    <main id="game">
-
-        <!-- Question Template -->
-        <section class="question" data-score="identity">
-            <h2>ما هو الرشيد بالنسبة لك؟</h2>
-            <button>مكان مررت به</button>
-            <button>حكاية لم تنته</button>
-            <button>عبء لا أريد حمله</button>
-        </section>
-
-        <section class="question" data-score="group">
-            <h2>إلى أي جماعة تنتمي؟</h2>
-            <button>الجماعة ذوك</button>
-            <button>الأغلبية</button>
-            <button>محايد</button>
-        </section>
-
-        <section class="question" data-score="land">
-            <h2>كلمة تصف بها تلك البقعة من الأرض</h2>
-            <button>بقعة ملعونة</button>
-            <button>أرض لئيمة</button>
-            <button>محايد</button>
-        </section>
-
-        <section class="question" data-score="memory">
-            <h2>أيهم يحمل ذكرياتك؟</h2>
-            <button>تلمدين</button>
-            <button>الجديدة</button>
-            <button>الزيرة</button>
-            <button>لخنك</button>
-            <button>علك شربه</button>
-        </section>
-
-        <section class="question" data-score="hypocrisy">
-            <h2>أيهم تنافق له؟</h2>
-            <button>أهلنا ذوك</button>
-            <button>أهلنا لخرين</button>
-            <button>كاملين</button>
-        </section>
-
-        <section class="question" data-score="awareness">
-            <h2>هل أنت غبي وتصدق كل ما تقرأه؟</h2>
-            <button>لا</button>
-            <button>غير واثق</button>
-            <button>صدقت أول جملة قرأتها</button>
-        </section>
-
-        <section class="question" data-score="future">
-            <h2>هل تعتقد أن أداة TELMEDEYN ستعمل لمصلحة أهل الرشيد؟</h2>
-            <button>لا</button>
-            <button>ربما</button>
-            <button>نعم</button>
-        </section>
-
-    </main>
-
-</div>
-
-<!-- Result Overlay -->
-<div id="resultOverlay" class="overlay">
-    <div class="modal large">
-        <h1 id="resultTitle"></h1>
-        <p id="resultText"></p>
-
-        <textarea id="userMessage" placeholder="اكتب رسالة قصيرة إن كنت تملك الجرأة..."></textarea>
-
-        <div class="actions">
-            <button id="sendTelegram" class="btn success">إرسال عبر تيليجرام</button>
-            <button id="exitBtn" class="btn">الخروج</button>
+    <!-- نافذة التحذير -->
+    <div id="warning-popup" class="popup hidden">
+        <div class="popup-content">
+            <p>⚠️ تحذير: هذه نافذة تحذيرية، استعد للنتيجة!</p>
+            <button id="close-warning">إغلاق</button>
         </div>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <!-- نافذة النتيجة -->
+    <div id="result-popup" class="popup hidden">
+        <div class="popup-content">
+            <p id="result-text"></p>
+            <button id="close-result">إغلاق</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
