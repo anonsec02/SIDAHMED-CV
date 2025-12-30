@@ -8,42 +8,26 @@
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">TELMEDEYN</div>
-  <div class="tagline">behavior over memory</div>
+<header>
+  <h1>TELMEDEYN</h1>
+  <p class="subtitle">behavioral analysis interface</p>
 </header>
 
-<main class="container">
+<section class="warning">
+  ⚠ تجربة تحليل نفسي غير سياسية ولا تمثل أداة حقيقية
+</section>
 
-  <section class="warning">
-    <p>
-      ⚠ هذا المحتوى تجريبي، تحليلي، وغير موجه للإساءة.<br>
-      لا يجمع بيانات، لا يتتبع هوية، ولا يمثل أداة حقيقية.
-    </p>
-  </section>
+<main id="game"></main>
 
-  <section class="intro">
-    <p>
-      هذه واجهة.<br>
-      وليست الأداة.
-    </p>
-  </section>
+<div id="overlay" class="overlay hidden">
+  <div id="modal" class="modal">
+    <p id="modal-text"></p>
+    <button onclick="closeModal()">متابعة</button>
+  </div>
+</div>
 
-  <section class="language">
-    <button onclick="setLang('ar')">العربية</button>
-    <button onclick="setLang('ru')">Русский</button>
-  </section>
-
-  <section id="game" class="game"></section>
-
-</main>
-
-<footer class="footer">
-  <p>
-    TELMEDEYN-tool (BETA)<br>
-    Linux-based environments · async design · workflow analysis
-  </p>
-  <p class="signature">sidahmed</p>
+<footer>
+  TELMEDEYN-tool (BETA) · Linux environments · sidahmed
 </footer>
 
 <script src="script.js"></script>
