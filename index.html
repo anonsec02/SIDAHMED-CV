@@ -2,49 +2,37 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <title>لعبة تحليل سلوكي</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هذه اللعبة لا علاقة لها بأدات TELMEDEYN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- نافذة التحذير -->
-    <div id="warning-modal" class="modal show">
-        <div class="modal-content warning">
-            <h2>تحذير</h2>
-            <p>هذه اللعبة لا علاقة لها بأدات TELMEDEYN. هل أنت مستعد لمواجهة الأسئلة؟</p>
-            <button id="start-btn" class="btn">متابعة</button>
-        </div>
-    </div>
+<div id="warning-modal" class="modal warning show">
+    <h2>تحذير</h2>
+    <p>هذه اللعبة لا علاقة لها بأي أداة أخرى.</p>
+    <button id="start-btn" class="submit-btn">متابعة</button>
+</div>
 
-    <!-- نافذة الأسئلة -->
-    <div id="quiz-modal" class="modal">
-        <div class="modal-content quiz">
-            <h2>هذه لعبة قذرة لكنها ليست أقذر من أفكاركم</h2>
-            <div id="quiz-container"></div>
-            <button id="submit-quiz" class="btn">إرسال الإجابات</button>
-        </div>
-    </div>
+<div id="quiz-modal" class="modal quiz">
+    <h2>هذه لعبة قذرة</h2>
+    <div id="quiz-container"></div>
+    <button id="submit-quiz" class="submit-btn">إرسال الإجابات</button>
+</div>
 
-    <!-- نافذة النتائج -->
-    <div id="result-modal" class="modal">
-        <div class="modal-content result">
-            <h2>نتيجة التحليل السلوكي</h2>
-            <p id="result-text"></p>
-            <p id="countdown">12</p>
-        </div>
-    </div>
+<div id="result-modal" class="modal result">
+    <h2>نتيجة التحليل</h2>
+    <p id="result-text"></p>
+    <p id="countdown" class="countdown">12</p>
+</div>
 
-    <!-- نافذة Telegram -->
-    <div id="telegram-modal" class="modal">
-        <div class="modal-content telegram">
-            <h2>أرسل رسالتك إلى SidAhmed</h2>
-            <textarea id="telegram-message" placeholder="اكتب رسالتك هنا"></textarea>
-            <button id="send-telegram" class="btn">إرسال إلى تيليجرام</button>
-        </div>
-    </div>
+<div id="telegram-modal" class="modal telegram">
+    <h2>أرسل رسالتك</h2>
+    <textarea id="telegram-message"></textarea>
+    <button id="send-telegram" class="submit-btn">إرسال</button>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
