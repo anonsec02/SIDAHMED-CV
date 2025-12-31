@@ -8,17 +8,17 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
     display: none; /* تظهر عند التفعيل فقط */
-    background: #fff; /* أبيض أساسي */
+    background: #fff; /* خلفية أساسية بيضاء */
     color: #000;
-    border-radius: 14px; /* حواف أكثر نعومة */
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45); /* ظل أعمق وأنيق */
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     width: 90%;
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 25px 20px;
+    padding: 20px;
     box-sizing: border-box;
-    transition: all 0.35s ease-in-out;
+    transition: all 0.3s ease-in-out;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -27,15 +27,82 @@
 ======================= */
 .modal.warning {
     background: #fff;
-    border-left: 6px solid #f1c40f; /* خط ذهبي جانبي لإبراز التحذير */
+    border-left: 6px solid #f1c40f; /* خط ذهبي جانبي */
     color: #222;
     text-align: center;
 }
 
 .modal.warning h2 {
-    color: #f39c12; /* عنوان التحذير ذهبي جذاب */
+    color: #f39c12; /* عنوان التحذير ذهبي */
     font-weight: 700;
     margin-bottom: 15px;
+}
+
+/* =======================
+   نافذة الأسئلة
+======================= */
+.modal.quiz {
+    background: #222; /* داكنة */
+    color: #fff;
+}
+
+.modal.quiz h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.quiz-question {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.quiz-options button {
+    display: block;
+    width: 100%;
+    margin: 6px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #444;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.quiz-options button:hover {
+    background: #555;
+}
+
+.quiz-options button:active {
+    transform: scale(0.97);
+}
+
+.quiz-options button.selected {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+
+/* زر إرسال الإجابات - مميز باللون الأخضر */
+button.submit-btn {
+    background: #4caf50; /* أخضر */
+    color: #fff; /* نص أبيض */
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+button.submit-btn:hover {
+    background: #45a049; /* أخضر أغمق عند المرور */
+}
+
+button.submit-btn:active {
+    transform: scale(0.97);
 }
 
 /* =======================
@@ -44,12 +111,12 @@
 .modal.result {
     background: #111; /* أسود داكن */
     color: #00ff00; /* أخضر رقمي */
-    border: 2px solid #00ff00; /* إطار أخضر بسيط */
+    border: 2px solid #00ff00; /* إطار أخضر */
     text-align: center;
     font-weight: 500;
     line-height: 1.5;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2); /* ظل أخضر خفيف لإحساس رقمي */
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2); /* ظل أخضر خفيف */
 }
 
 .modal.result h2 {
@@ -76,78 +143,12 @@
 }
 
 /* =======================
-   العناوين داخل النوافذ
-======================= */
-.modal h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* =======================
-   الأسئلة وخيارات الإجابة
-======================= */
-.quiz-question {
-    margin: 15px 0;
-    font-size: 1.1rem;
-}
-
-.quiz-options button {
-    display: block;
-    width: 100%;
-    margin: 6px 0;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #555;
-    background: #222;
-    color: #00ff00;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.2s ease-in-out;
-}
-
-.quiz-options button:hover {
-    background: #333;
-}
-
-.quiz-options button:active {
-    transform: scale(0.97);
-}
-
-.quiz-options button.selected {
-    background: #4caf50;
-    border-color: #4caf50;
-}
-
-/* =======================
-   أزرار عامة
-======================= */
-button.general-btn {
-    padding: 10px 22px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-top: 15px;
-    background: #222;
-    color: #00ff00;
-    transition: all 0.2s ease-in-out;
-}
-
-button.general-btn:hover {
-    opacity: 0.85;
-}
-
-button.general-btn:active {
-    transform: scale(0.97);
-}
-
-/* =======================
    الرسالة التحذيرية داخل نافذة التحذير
 ======================= */
 .warning-message {
     font-size: 1.1rem;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 /* =======================
@@ -165,7 +166,7 @@ button.general-btn:active {
 ======================= */
 @media (max-width: 768px) {
     .modal {
-        padding: 18px;
+        padding: 15px;
         max-height: 85vh;
     }
 
@@ -175,7 +176,7 @@ button.general-btn:active {
     }
 
     .modal h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 }
 
