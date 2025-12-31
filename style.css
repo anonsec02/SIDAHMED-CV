@@ -1,173 +1,112 @@
-/* =======================
-   إعدادات عامة
-======================= */
+* {
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+/* خلفية معتمة */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 10;
+}
+
+/* المودال */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
-    display: none;
-    width: 90%;
-    max-width: 500px;
-    max-height: 90vh;
+    background: #020617;
     padding: 20px;
-    box-sizing: border-box;
     border-radius: 12px;
-    font-family: 'Tajawal', sans-serif;
-    transition: all 0.3s ease;
+    width: 90%;
+    max-width: 420px;
+    display: none;
+    z-index: 20;
 }
 
-/* إظهار / إخفاء */
+/* تفعيل */
 .modal.show {
-    display: block;
-    opacity: 1;
-}
-.modal.hide {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-    pointer-events: none;
-}
-
-/* =======================
-   نافذة التحذير
-======================= */
-.modal.warning {
-    background: #ffffff;
-    color: #222;
-    text-align: center;
-    border-left: 6px solid #f1c40f;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-}
-
-.modal.warning h2 {
-    color: #f39c12;
-    margin-bottom: 15px;
-}
-
-/* =======================
-   نافذة الأسئلة
-======================= */
-.modal.quiz {
-    background: #222;
-    color: #fff;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    max-height: 90vh;
+    gap: 15px;
 }
 
-.modal.quiz h2 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.quiz-question {
-    margin: 15px 0;
-}
-
-/* التمرير الصحيح للأسئلة */
-#quiz-container {
-    flex: 1;
-    overflow-y: auto;
-    margin: 10px 0;
-    padding-right: 5px;
-}
-
-/* خيارات الأسئلة */
-.quiz-options button {
-    width: 100%;
-    padding: 12px;
-    margin: 6px 0;
-    background: #444;
-    border: 1px solid #555;
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.quiz-options button:hover {
-    background: #555;
-}
-
-.quiz-options button.selected {
-    background: #4caf50;
-    border-color: #4caf50;
-}
-
-/* =======================
-   زر أخضر موحد
-======================= */
+/* أزرار */
 .submit-btn {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
-    background: #4caf50;
+    background: #16a34a;
     color: #fff;
     border: none;
+    padding: 12px;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .submit-btn:hover {
-    background: #43a047;
+    opacity: 0.9;
 }
 
-.submit-btn:active {
-    transform: scale(0.97);
+/* نافذة الأسئلة */
+.modal.quiz {
+    max-height: 90vh;
 }
 
-/* =======================
-   نافذة نتيجة التحليل السلوكي (مُصححة)
-======================= */
-.modal.result {
-    background: #f4f4f4;
-    color: #222;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    border-top: 5px solid #4caf50;
+#quiz-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-left: 5px;
 }
 
-.modal.result h2 {
-    color: #333;
-    font-weight: 700;
-    margin-bottom: 12px;
+.quiz-question p {
+    font-weight: bold;
 }
 
-#result-text {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 10px 0;
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.countdown {
-    color: #777;
-    font-size: 1rem;
-    margin-top: 10px;
-    text-align: center;
-}
-
-/* =======================
-   نافذة تيليجرام
-======================= */
-.modal.telegram {
-    background: #0088cc;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,136,204,0.35);
-}
-
-.modal.telegram textarea {
-    width: 100%;
-    min-height: 80px;
-    margin-top: 10px;
+.quiz-options button {
+    background: #1e293b;
+    color: #e5e7eb;
+    border: none;
     padding: 10px;
     border-radius: 6px;
-    border: none;
+    cursor: pointer;
+}
+
+.quiz-options button.selected {
+    background: #2563eb;
+}
+
+/* نافذة النتيجة – لون هادئ */
+.modal.result {
+    background: #020617;
+    border: 1px solid #334155;
+}
+
+/* العد التنازلي */
+.countdown {
+    text-align: center;
+    font-size: 22px;
+    color: #38bdf8;
+}
+
+/* تيليجرام */
+textarea {
     resize: none;
-    font-family: inherit;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
 }
