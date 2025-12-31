@@ -66,6 +66,12 @@
 .quiz-question {
     margin: 15px 0;
 }
+#quiz-container {
+    flex: 1;
+    overflow-y: auto;
+    margin: 10px 0;
+    padding-right: 5px;
+}
 
 .quiz-options button {
     width: 100%;
