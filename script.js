@@ -8,7 +8,7 @@ const quizData = [
         options: ["الجماعة ذوك", "الجماعة الأخرى", "ماني أمركهم فشي كاملين"]
     },
     {
-        question: "أيهم تنافق له؟",
+        question: "لأي الجماعتين تنافق؟",
         options: ["ألا ايهم مسْ لبنتو", "كاملين", "المهم ألا الإستفادة"]
     },
     {
@@ -98,7 +98,7 @@ document.getElementById("submit-quiz").onclick = () => {
 function analyzeAnswers(a) {
     if (a[2] === "المهم ألا الإستفادة") return "منافق لكنك ضائع الاتجاه";
     if (a[3] === "واللهي") return "أنت نموذج حي لثقافة القطيع";
-    return "نتيجة عامة غير حاسمة";
+    return "آخر شي لاهي نهتم بيه رأيك";
 }
 
 document.getElementById("send-telegram").onclick = () => {
