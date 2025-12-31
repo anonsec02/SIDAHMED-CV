@@ -103,5 +103,5 @@ function analyzeAnswers(a) {
 
 document.getElementById("send-telegram").onclick = () => {
     const msg = encodeURIComponent(document.getElementById("telegram-message").value);
-    window.open(`https://t.me/YourTelegramUsername?start=${msg}`, "_blank");
+    window.open(`https://t.me/gaaraKZG?start=${msg}`, "_blank");
 };
