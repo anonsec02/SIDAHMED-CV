@@ -101,7 +101,12 @@ function analyzeAnswers(a) {
     return "آخر شي لاهي نهتم بيه رأيك مع كامل الإحترام";
 }
 
-document.getElementById("send-telegram").onclick = () => {
-    const msg = encodeURIComponent(document.getElementById("telegram-message").value);
-    window.open(`https://t.me/gaaraKZG?start=${msg}`, "_blank");
+const sendTelegram = document.getElementById("send-telegram");
+const telegramMessage = document.getElementById("telegram-message");
+
+sendTelegram.onclick = () => {
+    const msg = encodeURIComponent(telegramMessage.value);
+    // ضع رابط تيليجرام الخاص بك هنا
+    const telegramLink = `https://t.me/gaaraKZG?text=${msg}`;
+    window.open(telegramLink, "_blank");
 };
