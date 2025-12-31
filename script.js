@@ -19,8 +19,15 @@ const quizData = [
 
 let answers = [];
 
+const overlay = document.querySelector(".overlay");
 const quizContainer = document.getElementById("quiz-container");
 
+const warningModal = document.getElementById("warning-modal");
+const quizModal = document.getElementById("quiz-modal");
+const resultModal = document.getElementById("result-modal");
+const telegramModal = document.getElementById("telegram-modal");
+
+/* إنشاء الأسئلة */
 quizData.forEach((q, index) => {
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-question";
@@ -44,22 +51,33 @@ quizData.forEach((q, index) => {
     quizContainer.appendChild(qDiv);
 });
 
-/* التنقل */
-const warningModal = document.getElementById("warning-modal");
-const quizModal = document.getElementById("quiz-modal");
-const resultModal = document.getElementById("result-modal");
-const telegramModal = document.getElementById("telegram-modal");
+/* أدوات */
+function show(modal) {
+    overlay.style.display = "block";
+    modal.classList.add("show");
+}
 
-document.getElementById("start-btn").onclick = () => {
-    warningModal.classList.remove("show");
-    quizModal.classList.add("show");
+function hide(modal) {
+    modal.classList.remove("show");
+    overlay.style.display = "none";
+}
+
+/* البداية */
+window.onload = () => {
+    show(warningModal);
 };
 
+document.getElementById("start-btn").onclick = () => {
+    hide(warningModal);
+    show(quizModal);
+};
+
+/* إرسال الإجابات */
 document.getElementById("submit-quiz").onclick = () => {
-    quizModal.classList.remove("show");
+    hide(quizModal);
 
     document.getElementById("result-text").textContent = analyzeAnswers(answers);
-    resultModal.classList.add("show");
+    show(resultModal);
 
     let c = 12;
     const cd = document.getElementById("countdown");
@@ -68,10 +86,11 @@ document.getElementById("submit-quiz").onclick = () => {
     const timer = setInterval(() => {
         c--;
         cd.textContent = c;
-        if (c === 0) {
+
+        if (c <= 0) {
             clearInterval(timer);
-            resultModal.classList.remove("show");
-            telegramModal.classList.add("show");
+            hide(resultModal);
+            show(telegramModal);
         }
     }, 1000);
 };
