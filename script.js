@@ -27,7 +27,6 @@ const quizModal = document.getElementById("quiz-modal");
 const resultModal = document.getElementById("result-modal");
 const telegramModal = document.getElementById("telegram-modal");
 
-/* إنشاء الأسئلة */
 quizData.forEach((q, index) => {
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-question";
@@ -51,7 +50,6 @@ quizData.forEach((q, index) => {
     quizContainer.appendChild(qDiv);
 });
 
-/* أدوات */
 function show(modal) {
     overlay.style.display = "block";
     modal.classList.add("show");
@@ -62,7 +60,6 @@ function hide(modal) {
     overlay.style.display = "none";
 }
 
-/* البداية */
 window.onload = () => {
     show(warningModal);
 };
@@ -72,7 +69,6 @@ document.getElementById("start-btn").onclick = () => {
     show(quizModal);
 };
 
-/* إرسال الإجابات */
 document.getElementById("submit-quiz").onclick = () => {
     hide(quizModal);
 
@@ -96,9 +92,9 @@ document.getElementById("submit-quiz").onclick = () => {
 };
 
 function analyzeAnswers(a) {
-    if (a[2] === "المهم ألا الإستفادة") return "منافق لكنك ضائع الاتجاه";
+    if (a[2] === "المهم ألا الإستفادة") return "طبعا منافق كيف ذاك لخليق كامل";
     if (a[3] === "واللهي") return "أنت نموذج حي لثقافة القطيع";
-    return "آخر شي لاهي نهتم بيه رأيك مع كامل الإحترام";
+    return "ألا تعبت راصك يوني آنَ آخر شي لاهي نهتم بيه رأيك";
 }
 
 const sendTelegram = document.getElementById("send-telegram");
@@ -106,7 +102,7 @@ const telegramMessage = document.getElementById("telegram-message");
 
 sendTelegram.onclick = () => {
     const msg = encodeURIComponent(telegramMessage.value);
-    // ضع رابط تيليجرام الخاص بك هنا
+    //
     const telegramLink = `https://t.me/gaaraKZG?text=${msg}`;
     window.open(telegramLink, "_blank");
 };
