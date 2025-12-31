@@ -94,7 +94,7 @@ document.getElementById("submit-quiz").onclick = () => {
 function analyzeAnswers(a) {
     if (a[2] === "المهم ألا الإستفادة") return "طبعا منافق كيف ذاك لخليق كامل";
     if (a[3] === "واللهي") return "أنت نموذج حي لثقافة القطيع";
-    return "ألا تعبت راصك يوني آنَ آخر شي لاهي نهتم بيه رأيك";
+    return "فضولك العقيم لا يستحق أي اهتمام هنا";
 }
 
 const sendTelegram = document.getElementById("send-telegram");
