@@ -7,56 +7,64 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    display: none; /* تظهر عند التفعيل فقط */
-    background: rgba(255, 255, 255, 0.95);
+    display: none;
+    background: #fff; /* استخدم الأبيض كخلفية أساسية */
     color: #000;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 14px; /* حواف أكثر نعومة */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45); /* ظل أعمق وأنيق */
     width: 90%;
-    max-width: 500px;
+    max-width: 480px; /* تقليل قليلاً لراحة القراءة */
     max-height: 90vh;
     overflow-y: auto;
-    padding: 20px;
+    padding: 25px 20px;
     box-sizing: border-box;
-    transition: all 0.3s ease-in-out;
-}
-
-/* نافذة التحذير */
-.modal.warning {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #f1c40f; /* ذهبي */
-    color: #000;
-}
-
-/* نافذة الأسئلة */
-.modal.quiz {
-    background: #222;
-    color: #fff;
-}
-
-/* نافذة نتيجة التحليل */
-.modal.result {
-    background: #333;
-    color: #fff;
-}
-
-/* نافذة إرسال رسالة تيليجرام */
-.modal.telegram {
-    background: #0088cc;
-    color: #fff;
+    transition: all 0.35s ease-in-out; /* تأثير انسيابي أهدأ */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* =======================
-   العناوين
+   نافذة التحذير
+   ======================= */
+.modal.warning {
+    background: #fff;
+    border-left: 6px solid #f1c40f; /* خط جانبي ذهبي بارز */
+    color: #222;
+    text-align: center;
+}
+
+.modal.warning h2 {
+    color: #f39c12; /* عنوان التحذير بلون ذهبي جذاب */
+    font-weight: 700;
+}
+
+/* =======================
+   نافذة نتيجة التحليل / المرحلة الأخيرة
+   ======================= */
+.modal.result {
+    background: #000; /* أسود كامل ليصبح التأثير قوي */
+    color: #00ff00; /* أخضر رقمي، متناسق مع شعار الأداة */
+    border: 2px solid #00ff00; /* إطار أخضر بسيط */
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.modal.result h2 {
+    font-size: 1.6rem;
+    color: #00ff00;
+    margin-bottom: 15px;
+}
+
+/* =======================
+   العناوين داخل النوافذ
    ======================= */
 .modal h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    text-align: center;
 }
 
 /* =======================
-   الأسئلة وخيارات الإجابة
+   أسئلة وخيارات الإجابة
    ======================= */
 .quiz-question {
     margin: 15px 0;
@@ -68,17 +76,17 @@
     width: 100%;
     margin: 6px 0;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #555;
-    background: #444;
-    color: #fff;
+    background: #111;
+    color: #00ff00;
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.2s ease-in-out;
 }
 
 .quiz-options button:hover {
-    background: #555;
+    background: #222;
 }
 
 .quiz-options button:active {
@@ -94,12 +102,14 @@
    أزرار عامة
    ======================= */
 button.general-btn {
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 10px 22px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     font-size: 1rem;
     margin-top: 15px;
+    background: #222;
+    color: #00ff00;
     transition: all 0.2s ease-in-out;
 }
 
@@ -115,7 +125,6 @@ button.general-btn:active {
    الرسالة التحذيرية داخل نافذة التحذير
    ======================= */
 .warning-message {
-    text-align: center;
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
@@ -135,7 +144,7 @@ button.general-btn:active {
    ======================= */
 @media (max-width: 768px) {
     .modal {
-        padding: 15px;
+        padding: 18px;
         max-height: 85vh;
     }
 
@@ -145,7 +154,7 @@ button.general-btn:active {
     }
 
     .modal h2 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 }
 
