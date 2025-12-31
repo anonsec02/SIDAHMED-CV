@@ -98,7 +98,7 @@ document.getElementById("submit-quiz").onclick = () => {
 function analyzeAnswers(a) {
     if (a[2] === "المهم ألا الإستفادة") return "منافق لكنك ضائع الاتجاه";
     if (a[3] === "واللهي") return "أنت نموذج حي لثقافة القطيع";
-    return "آخر شي لاهي نهتم بيه رأيك";
+    return "آخر شي لاهي نهتم بيه رأيك مع كامل الإحترام";
 }
 
 document.getElementById("send-telegram").onclick = () => {
