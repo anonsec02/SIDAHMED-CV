@@ -56,7 +56,6 @@
     flex-direction: column;
     max-height: 90vh;
 }
-}
 
 .modal.quiz h2 {
     text-align: center;
@@ -66,6 +65,8 @@
 .quiz-question {
     margin: 15px 0;
 }
+
+/* التمرير الصحيح للأسئلة */
 #quiz-container {
     flex: 1;
     overflow-y: auto;
@@ -73,6 +74,7 @@
     padding-right: 5px;
 }
 
+/* خيارات الأسئلة */
 .quiz-options button {
     width: 100%;
     padding: 12px;
@@ -119,23 +121,34 @@
 }
 
 /* =======================
-   نافذة النتيجة
+   نافذة نتيجة التحليل السلوكي (مُصححة)
 ======================= */
 .modal.result {
-    background: #111;
-    color: #00ff00;
-    border: 2px solid #00ff00;
+    background: #f4f4f4;
+    color: #222;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,255,0,0.25);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border-top: 5px solid #4caf50;
 }
 
 .modal.result h2 {
-    margin-bottom: 10px;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+#result-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 10px 0;
 }
 
 .countdown {
-    font-weight: bold;
-    font-size: 1.2rem;
+    color: #777;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* =======================
